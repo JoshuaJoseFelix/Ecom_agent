@@ -1,22 +1,18 @@
-class Solution(object):
+class Solution:
+    def sortColors(self, nums: list[int]) -> None:
+        def countingsort():
+            count=defaultdict(int)
+            minVal,maxVal=min(nums),max(nums)
+            for val in nums:
+                count[val] +=1
+            
+            index=0
+            for val in range(minVal,maxVal+1):
+                while count[val]>0:
+                    nums[index]=val
+                    index +=1
+                    count[val] -= 1
 
-    def sortColors(self, nums):
-        l = 0
-        mid = 0
-        r = len(nums) - 1
 
-        while mid <= r:
-
-            if nums[mid] == 0:
-                nums[l], nums[mid] = nums[mid], nums[l]
-                l += 1
-                mid += 1
-
-            elif nums[mid] == 1:
-                mid += 1
-
-            else:  # nums[mid] == 2
-                nums[mid], nums[r] = nums[r], nums[mid]
-                r -= 1
-
+        countingsort()
         return nums

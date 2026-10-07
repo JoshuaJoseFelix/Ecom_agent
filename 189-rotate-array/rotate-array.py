@@ -1,12 +1,8 @@
-class Solution(object):
-    def rotate(self, nums, k):
+class Solution:
+    def rotate(self, nums: list[int], k: int) -> None:
+        # Handle cases where k is larger than the length of the list
         k = k % len(nums)
-        arr = len(nums) - k
-
-        list1 = nums[0:arr]
-        list2 = nums[arr:]
-
-        nums[:] = list2 + list1
-
-        return nums
         
+        # Split the list into two parts using standard slicing
+        # and reassign them back into nums in-place
+        nums[:] = nums[-k:] + nums[:-k]
